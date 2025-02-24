@@ -1,10 +1,9 @@
 package com.bbva.uuaa.helloWorld.facade.v0;
 
-import com.bbva.jee.arq.spring.core.catalog.gabi.ServiceResponse;
-import com.bbva.uuaa.helloWorld.facade.v0.dto.Hello;
+import com.bbva.jee.arq.spring.core.catalog.gabi.ServiceResponseCreated;
+import com.bbva.uuaa.helloWorld.facade.v0.dto.DataIn;
+import com.bbva.uuaa.helloWorld.facade.v0.dto.DataOut;
 
 public interface ISrvHelloWorld {
-	
-	ServiceResponse<Hello> helloWorld ();
-
+	ServiceResponseCreated<DataOut> helloWorldPost(DataIn dataIn, String nuip);
 }
