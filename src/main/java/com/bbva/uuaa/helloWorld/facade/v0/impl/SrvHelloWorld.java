@@ -44,8 +44,6 @@ public class SrvHelloWorld implements ISrvHelloWorld {
 		BDataIn bDataIn = mapper.mapDataIn(dataIn);
 		BDataOut bDataOut = business.mapBusiness(bDataIn);
 		DataOut dataOut = mapper.mapDataOut(bDataOut);
-
-
 		return ServiceResponseCreated.data(dataOut).build();
 	}
 }

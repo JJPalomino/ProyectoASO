@@ -40,8 +40,8 @@ public interface IMapperSrvHelloWorld {
     BProduct mapProductIn(Product product);
 
     @Mapping(target = "id", source = "bid")
-    @Mapping(target = "subproductOut", source = "bsubproduct")
-    ProductOut mapProdcutOut(BProduct bProduct);
+    @Mapping(target = "subproductOut", source = "BSubproductOut")
+    ProductOut mapProdcutOut(BProductOut bproductOut);
 
     @Mapping(target = "bid", source = "id")
     BSubproduct mapSubproductIn(Subproduct subproduct);

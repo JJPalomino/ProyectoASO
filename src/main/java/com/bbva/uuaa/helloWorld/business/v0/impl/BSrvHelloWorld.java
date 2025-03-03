@@ -2,11 +2,9 @@ package com.bbva.uuaa.helloWorld.business.v0.impl;
 
 import com.bbva.uuaa.helloWorld.business.v0.IBSrvHelloWorld;
 import com.bbva.uuaa.helloWorld.business.v0.dto.*;
-import com.bbva.uuaa.helloWorld.business.v0.dto.BDetails;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 @Service
 public class BSrvHelloWorld implements IBSrvHelloWorld {
@@ -19,8 +17,9 @@ public class BSrvHelloWorld implements IBSrvHelloWorld {
         BLimitAmountOut maximumAmount = new BLimitAmountOut();
         BProductOut bProductOut = new BProductOut();
         BSubproductOut bSubproductOut = new BSubproductOut();
+        Random random = new Random();
 
-        long generatedId = ThreadLocalRandom.current().nextLong(1_000_000_000L, 1_000_000_000L);
+        long generatedId = 1_000_000_000L + (long) (random.nextDouble() * (1_000_000_000L));
         String assignedUniqueId = Long.toString(generatedId);
         bDataOut.setId(assignedUniqueId);
 
@@ -48,7 +47,6 @@ public class BSrvHelloWorld implements IBSrvHelloWorld {
         bDetailsOut.setBminimumAmount(minimumAmount);
         bDetailsOut.setBmaximumAmount(maximumAmount);
 
-        //Seteamos a Product con Subproduct
         bProductOut.setBid(bDataIn.getBdetails().getBProduct().getBid());
 
         bSubproductOut.setBid(bDataIn.getBdetails().getBProduct().getBsubproduct().getBid());
@@ -56,7 +54,6 @@ public class BSrvHelloWorld implements IBSrvHelloWorld {
         bProductOut.setBSubproductOut(bSubproductOut);
         bDetailsOut.setBproductOut(bProductOut);
 
-        //Seteamos a DataIn
         bDataOut.setBdetailsOut(bDetailsOut);
         return bDataOut;
     }
